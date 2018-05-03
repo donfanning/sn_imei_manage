@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">所有产品</li>
+{% endblock %}
+
+{% block content %}
+  <table class="table">
+  	<thead class="thead-dark">
+  	  <tr>
+  	  	<th>产品型号</th>
+  	  	<th>起始SN号</th>
+  	  	<th>结束SN号</th>
+  	  	<th>最后更新</th>
+  	  </tr>
+  	</thead>
+    <tbody>
+      {% for product in products %}
+      	<tr>
+      	  <td><a href="{% url 'product_records' product.pk %}">{{ product.name }}</a></td>
+          <td class="align-middle">{{ product.get_product_start_sn}}</td>
+          {% with record=product.get_last_record %}
+          {% if record %}
+      	  <td class="align-middle">{{ product.get_last_record.current_last_sn }}</td>
+      	  <td>
+            <small>
+                  <a href="{% url 'product_records' product.pk %}">
+                  By {{record.created_by}} at {{ record.created_at }}</a>
+            </small>
+          </td>
+          {% else %}
+          <td class="align-middle">
+            <small class="text-muted"><em>No records yet</em></small>
+          </td>
+          <td class="align-middle">
+            <small class="text-muted"><em>No records yet</em></small>
+          </td>
+          {% endif %}           
+          {% endwith %}
+      	</tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

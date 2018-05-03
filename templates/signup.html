@@ -1,0 +1,27 @@
+{% extends 'base_accounts.html' %}
+
+
+{% block title%}账号注册{% endblock %}
+
+
+
+{% block content %}
+  <div class="row justify-content-center">
+  	<div class="col-lg-8 col-md-10 col-sm-12">
+  	  <div class="card">
+  	  	<div class="card-body">
+  	  	  <h4 class="card title">账号注册</h4>  	  	  
+	  	  <form method="post" novalidate>
+	  	  	{% csrf_token %}
+	  	  	{% include 'includes/form.html' %}
+	  	  	<button type="submit" class="btn btn-primary">创建账号</button>
+	  	  </form>
+	  	</div>
+	  	<div class="card-footer text-muted text-center">
+  			已经有账号?<a href="{% url 'login' %}">登陆</a>
+  		</div>
+  	  </div>
+  	</div>
+  </div>
+
+{% endblock %}

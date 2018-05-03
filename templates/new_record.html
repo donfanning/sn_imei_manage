@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+
+
+{% block title %}SN号段新增{% endblock%}
+
+
+{% block breadcrumb %}
+	<li class="breadcrumb-item"><a href="{% url 'home' %}">所有产品</a></li>
+	<li class="breadcrumb-item"><a href="{% url 'product_records' product.pk %}">{{ product.name }}</a></li>
+	<li class="breadcrumb-item active">SN号段申请</li>
+{% endblock %}
+
+
+{% block content %}
+	<form method="post" novalidate>
+		{% csrf_token %}
+		
+		{% include 'includes/form.html' %}
+
+		<button type="submit" class="btn btn-success">确定</button>	
+	</form>
+{% endblock %}

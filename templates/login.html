@@ -1,0 +1,29 @@
+{% extends 'base_accounts.html' %}
+
+
+{% block title%}用户登陆{% endblock %}
+
+
+
+
+{% block content %}
+  <div class="row justify-content-center">
+  	<div class="col-lg-4 col-md-6 col-sm-8">
+  	  <div class="card">
+  	  	<div class="card-body">
+  	  	  <h4 class="card title">账号登陆</h4>  	  	  
+	  	  <form method="post" novalidate>
+	  	  	{% csrf_token %}
+          <!-- <input type="hidden" name="next" value="{{ next }}"> -->
+	  	  	{% include 'includes/form.html' %}
+	  	  	<button type="submit" class="btn btn-primary btn-block">登陆</button>
+	  	  </form>
+	  	</div>
+	  	<div class="card-footer text-muted text-center">
+  			还没有账号？<a href="{% url 'signup' %}">立即注册</a>
+  		</div>
+  	  </div>
+  	</div>
+  </div>
+
+{% endblock %}
