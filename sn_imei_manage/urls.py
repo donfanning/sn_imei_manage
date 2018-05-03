@@ -28,5 +28,11 @@ urlpatterns = [
     
 	path('products/<int:pk>/',views.product_records,name='product_records'),
 	path('products/<int:pk>/new/',views.new_record,name='new_record'),
+
+    path('settings/account/',accounts_views.UserUpdateView.as_view(),name='my_account'),
+    path('settings/password/',auth_views.PasswordChangeView.as_view(template_name='password_change.html'),
+        name='password_change'),
+    path('settings/password/done/',auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),
+        name='password_change_done'),
     path('admin/', admin.site.urls),
 ]
